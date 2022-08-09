@@ -5,3 +5,6 @@ export interface IQuestion {
   topic?: string;
   options: string[];
 }
+export interface ITopic {
+  [word: string]: number;
+}
