@@ -2,6 +2,6 @@ export interface IQuestion {
   text?: string;
   code?: string;
   correct: number;
-  topic: string;
+  topic?: string;
   options: string[];
 }

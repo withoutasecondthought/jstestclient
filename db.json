@@ -1,0 +1,150 @@
+[
+  {
+    "code": "let user = {\n  name: \"Джон\",\n  go: function() { alert(this.name) }\n}\n\n(user.go)()",
+    "options": [
+      "Джон",
+      "джон",
+      "this.name",
+      "Будет ошибка"
+    ],
+    "correct": 3
+  },
+  {
+    "text": "Чему равно arr.length?",
+    "code": "function MyArray() { }\nMyArray.prototype = [];\n\nlet arr = new MyArray();\narr.push(1, 2, 3);\nalert(arr.length);",
+    "options": [
+      0,
+      "undefined",
+      3,
+      "В коде ошибка"
+    ],
+    "correct": 2
+  },
+  {
+    "text": "Есть ли разница между вызовами i++ и ++i?",
+    "options": [
+      "Разница в значении, которое возвращает такой вызов.",
+      "Разница в значении i после вызова.",
+      "Нет никакой разницы."
+    ],
+    "correct": 0
+  },
+  {
+  "code": "let obj = {\n \"0\": 1,\n 0: 2\n};\n\nalert ( obj[\"0\"] + obj[0] );",
+  "options": [
+    2,
+    3,
+    4,
+    12,
+    "В коде ошибка"
+  ],
+  "correct": 1
+},
+  {
+    "code": "f.call(f);\n\nfunction f() {\n  alert( this );\n}",
+    "options": [
+      "[object Object]",
+      "код функции f",
+      "ошибка: слишком глубокая рекурсия.",
+      "ошибка: переменная f не определена.",
+      "другое"
+    ],
+    "correct": 1
+  },
+  {
+    "text": "После выполнения этого кода – в каких объектах из списка содержится свойство name?",
+    "code": "function User() { }\n\nlet vasya = new User();\n\nvasya.__proto__.name = \"Vasya\";",
+    "options": [
+      "vasya.__proto__",
+      "vasya.prototype",
+      "User.__proto__"
+    ],
+    "correct": 0
+  },
+  {
+    "text": "Существует ли такое значение X, что после присваивания a = X вызов alert(a == X) выдаст false?",
+    "code": "let a = X;\nalert( a == X ); // false",
+    "options": [
+      "Да, X – это undefined.",
+      "Да, X – это null.",
+      "Да, другое.",
+      "Нет, не бывает"
+    ],
+    "correct": 2
+  },
+  {
+    "text": "Каким будет результат при обращении к свойству объекта ref? Почему?",
+    "code": "function makeUser() {\n  return {\n    name: \"Джон\",\n    ref: this\n  };\n};\n\nlet user = makeUser();\n\nalert( user.ref.name ); ",
+    "options": [
+      "Джон",
+      "{\n    name: \"Джон\",\n    ref: this\n  }",
+      "Будет ошибка",
+      "undefined"
+    ],
+    "correct": 2
+  },
+  {
+    "code": "let a = new Array(1,2), b = new Array(3);\nalert(a[0] + b[0]);",
+    "options": [
+      1,
+      4,
+      "undefined",
+      "NaN"
+    ],
+    "correct": 3
+  },
+  {
+    "text": "Чему равно 0 || 1 && 2 || 3 ?",
+    "options": [
+      0,
+      1,
+      2,
+      3,
+      "true",
+      "false"
+    ],
+    "correct": 2
+  },
+  {
+    "text": "Какой код корректно найдёт максимальное значение в непустом массиве arr?",
+    "options": [
+      "arr.reduce(function(prev, item) { return Math.max(prev, item) })",
+      "arr.reduce(function(prev, item) { return Math.max(prev, item) })",
+      "Math.max(arr)",
+      "Все варианты возможны"
+    ],
+    "correct": 3
+  },
+  {
+    "text": "В представленном ниже коде мы намерены вызвать obj.go() метод 4 раза подряд. В каких случаях мы получим undefined?",
+    "code": "let obj, method;\n\nobj = {\n  go: function() { alert(this); }\n};\n\nobj.go();         \n\n(obj.go)();            \n\n(method = obj.go)();   \n\n(obj.go || obj.stop)(); ",
+    "options": [
+      "1 и 2",
+      "только 2",
+      "2 и 3",
+      "во всех",
+      "3 и 4",
+      "только 4",
+      "2 и 4"
+    ],
+    "correct": 4
+  },
+  {
+    "code": "let str = \"Hello\";\nstr.something = 5;\nalert(str.something); ",
+    "options": [
+      5,
+      "undefined",
+      "Будет ошибка"
+    ],
+    "correct": 1
+  },
+  {
+    "code": "alert(str); // ?\nlet str = \"Hello\";",
+    "options": [
+      "Hello",
+      "undefined",
+      "Будет ошибка"
+    ],
+    "correct": 2
+  }
+]

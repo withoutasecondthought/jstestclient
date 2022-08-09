@@ -1,7 +1,112 @@
-.wrap {
-    align-self: center;
-    justify-self: center;
-    background-color: #fff;
-    width: 100px;
-    height: 100px;
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@600&family=Smooch+Sans&display=swap');
+
+
+.title{
+    font-family: "Rubick", sans-serif ;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 25px;
+    margin-bottom: 40px;
+    text-align: center;
 }
+.code{
+    user-select: text;
+    font-family: Consolas, sans-serif;
+    font-size: 13px;
+    line-height: 15px;
+    background: #2B2B2B;
+    color: #ffffff;
+    padding: 30px 45px;
+}
+.options{
+    padding: 30px 45px;
+
+}
+.option{
+    height: 30px;
+    display: flex;
+    font-family: "Consolas", sans-serif ;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 19px;
+    transition-duration: 0.4s;
+    margin: 20px 0;
+    flex-direction: row;
+    align-items: center;
+}
+.option:hover{
+    cursor: pointer;
+    padding: 0 10px;
+}
+
+.button{
+    display: flex;
+    background-color: #f7e018;
+    padding: 10px 15px;
+    margin: 20px auto;
+    width: 200px;
+    box-shadow: 10px 0 0 #000000;
+    font-family: "Rubick", sans-serif ;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 25px;
+    text-align: center;
+    user-select: none;
+
+    transition-duration: 0.4s;
+}
+
+.button:hover{
+    box-shadow: -10px 0 0 #000000;
+    cursor: pointer;
+}
+
+.button:active{
+    transition-duration: 0.1s;
+    box-shadow: -10px 0 0 #f7e018;
+    background-color: #000000;
+    color: #ffffff;
+    cursor: pointer;
+}
+.checkbox{
+    position: relative;
+}
+.checkbox:before {
+    content: '.';
+    height: 10px;
+    width: 10px;
+    border: 1px solid black;
+    transition-duration: 0.4s;
+    justify-content: center;
+    align-items: center;
+    line-height: 19px;
+    font-size: 15px;
+    display: inline-flex;
+    margin: auto 10px;
+    background-color: #000;
+
+}
+
+.checkbox:hover:before{
+    content: ".";
+}
+
+
+.checkboxActive:before{
+    color: #000;
+    background-color: #000000;
+    margin-right: 10px;
+    margin-left: -10px;
+}
+
+.redAlert{
+    background-color: red;
+    color: white;
+    font-size: 20px;
+    display: inline-block;
+    margin-left: 20px;
+    padding: 10px 15px;
+}
+
+
+
