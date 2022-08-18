@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@600&family=Smooch+Sans&display=swap');
+.result{
+    font-family: "Consolas", sans-serif ;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 45px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.header{
+    font-family: "Consolas", sans-serif ;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 25px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.menuPoint{
+    font-family: "Consolas", sans-serif ;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 25px;
+    margin: 7px 0;
+}
+.link{
+    display: block;
+    margin-left: 15px;
+    font-family: "Consolas", sans-serif ;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 25px;
+    text-decoration: underline;
+    color: black;
+}
+.link:hover{
+    cursor: pointer;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+button{
+    background: none;
+    font-family: "Consolas", sans-serif ;
+    font-weight: 300;
+    border: 1px solid black;
+}
+
+button:hover{
+    border: 1px solid white;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+input{
+    background: none;
+    font-family: "Consolas", sans-serif ;
+    font-weight: 300;
+    border: 1px solid black;
+    outline: none;
+    margin-right: 5px;
+}

@@ -2,14 +2,20 @@ import React, { useEffect, useState } from "react";
 import logo from "./static/logo.svg";
 import "./index.css";
 import instance from "./helpers/instance";
-import { IQuestion, ITopic } from "./@types";
+import { IQuestion, IResults, IResultTopic, ITopic } from "./@types";
 import QuestionBlock from "./components/QuestionBlock";
 import Skeleton from "./components/Skeleton/Skeleton";
+import Answers from "./components/Answers";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [list, setList] = useState<IQuestion[]>([]);
   const [show, setShow] = useState(0);
   const [answers, setAnswers] = useState<ITopic>({});
+  const [skeletonText, setSkeletonText] = useState("WAIT A SECOND");
+  const [links, setLinks] = useState<IResultTopic[]>([]);
+  const [percents, setPercents] = useState("");
 
   useEffect(() => {
     if (!list.length) {
@@ -24,36 +30,56 @@ function App() {
       setAnswers(data.topics);
       console.log(data);
     } catch (e) {
-      console.log(e);
+      setSkeletonText("BACKEND FALL LIKE A GOOD GUY");
     }
   };
 
-  const answerHandler = (v: number) => {
-      if (v === list[show-1].correct){
-        setAnswers(prevState => {...prevState, list[show-1].topic = prevState.list[show-1].topic+1})
-      }
+  const answerHandler = async (v: number) => {
+    if (v === list[show - 1]?.correct) {
+      // @ts-ignore
+      const topic = list[show - 1].topic.toString();
+      setAnswers((prevState) => ({
+        ...prevState,
+        [topic]: ++prevState[topic],
+      }));
+    }
+    if (show === list.length - 1) {
+      const { data }: { data: IResults } = await instance.post(
+        "/estimate",
+        answers
+      );
+      setLinks(data.topics);
+      setPercents(data.result);
+    }
   };
 
   return (
     <div className="App">
-      <Skeleton isLoaded={list.length}>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+      <Skeleton isLoaded={list.length} title={skeletonText}>
         {show <= list.length - 1 ? (
           <QuestionBlock
             returnIndex={(v) => {
               setShow((prevState) => ++prevState);
-              answerHandler(v)
-              console.log(v);
+              answerHandler(v);
             }}
             {...list[show]}
           />
         ) : (
-          <div className={"container"}>
-            <div className={"wrap"}>{scoreCounter()}</div>
-          </div>
+          <Answers result={percents} topics={links} />
         )}
-
-        <img src={logo} className="logo" alt="logo" />
       </Skeleton>
+      <img src={logo} className="logo" alt="logo" />
     </div>
   );
 }
