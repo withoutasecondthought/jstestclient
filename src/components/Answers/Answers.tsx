@@ -12,7 +12,7 @@ const Answers = ({ result, topics }: IResults) => {
     const themes: string[] = [];
     topics.forEach((item) => themes.push(item.title));
     try {
-      const req = await instance.post("/email", {
+      await instance.post("/email", {
         name: name?.current?.value,
         email: email?.current?.value,
         results: themes,
@@ -34,7 +34,12 @@ const Answers = ({ result, topics }: IResults) => {
           <div>
             <div className={styles.menuPoint}>{item.title}:</div>
             {item.links.map((item) => (
-              <a target={"_blank"} href={item} className={styles.link}>
+              <a
+                target={"_blank"}
+                rel="noreferrer"
+                href={item}
+                className={styles.link}
+              >
                 {item}
               </a>
             ))}
