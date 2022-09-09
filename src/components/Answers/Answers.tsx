@@ -9,6 +9,20 @@ const Answers = ({ result, topics }: IResults) => {
   const email = useRef<HTMLInputElement>(null);
 
   const clickHandler = async () => {
+    if (name?.current?.value === "") {
+      toast.error("Вы оставили поле пустым");
+      return null;
+    }
+    if (email?.current?.value === "") {
+      toast.error("Вы оставили поле пустым");
+      return null;
+    }
+    const validRegex =
+      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    if (!email?.current?.value.match(validRegex)) {
+      toast.error("Email не корректен");
+      return null;
+    }
     const themes: string[] = [];
     topics.forEach((item) => themes.push(item.title));
     try {
@@ -19,7 +33,11 @@ const Answers = ({ result, topics }: IResults) => {
       });
       toast.success("Заявка принята");
     } catch (e: any) {
-      toast.error("Проверьте правильность заполнения полей");
+      if (e.response.status === 403) {
+        toast.error("Ваша заявка уже принята");
+      } else {
+        toast.error("Проверьте правильность заполнения полей");
+      }
     }
   };
 

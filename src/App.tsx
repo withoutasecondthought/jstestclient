@@ -28,7 +28,6 @@ function App() {
       const { data }: { data: any } = await instance.get("/questions");
       setList(data.questions);
       setAnswers(data.topics);
-      console.log(data);
     } catch (e) {
       setSkeletonText("BACKEND FALL LIKE A GOOD GUY");
     }
