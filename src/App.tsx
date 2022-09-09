@@ -21,7 +21,7 @@ function App() {
     if (!list.length) {
       parseQuestions();
     }
-  }, []);
+  }, [list.length]);
 
   const parseQuestions = async () => {
     try {
